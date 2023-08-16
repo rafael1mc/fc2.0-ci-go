@@ -9,8 +9,11 @@ jobs:
     steps:
       - name: My step to checkout
         uses: actions/checkout@v2
-      - uses: actions/setup-go@v2
+      - name: ${{ secrets.FOO_BAR }}
+        uses: actions/setup-go@v2
         with:
           go-version: 1.15
+      - run: echo TRYING TO READ secret
+      - run: echo ${{ secrets.FOO_BAR }}
       - run: go test
       - run: go run math.go
