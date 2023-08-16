@@ -11,10 +11,10 @@ jobs:
     #     go: ['1.14', '1.15']
     steps:
       - uses: actions/checkout@v2
-        with:
-          repository: rafael1mc/fc2.0-ci-go
-          ref: main
-          path: .github/workflows
+        # with:
+        #   repository: rafael1mc/fc2.0-ci-go
+        #   ref: main
+        #   path: .github/workflows
       - uses: actions/setup-go@v2
         with:
           # go-version: ${{ matrix.go }}
