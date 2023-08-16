@@ -6,18 +6,16 @@ on:
 jobs:
   check-application:
     runs-on: ubuntu-latest
-    # strategy:
-    #   matrix:
-    #     go: ['1.14', '1.15']
     steps:
-      - uses: actions/checkout@v2
-        # with:
-        #   repository: rafael1mc/fc2.0-ci-go
-        #   ref: main
-        #   path: .github/workflows
-      - uses: actions/setup-go@v2
+      - name: My step to checkout
+        uses: actions/checkout@v2
+      - name: ${{ secrets.FOO_BAR }}
+        uses: actions/setup-go@v2
         with:
-          # go-version: ${{ matrix.go }}
           go-version: 1.15
+      - run: echo TRYING TO READ secret
+      - run: echo you know $YO this
+        env:
+          YO: ${{ secrets.FOO_BAR }}
       - run: go test
       - run: go run math.go
