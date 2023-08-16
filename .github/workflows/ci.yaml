@@ -14,6 +14,8 @@ jobs:
         with:
           go-version: 1.15
       - run: echo TRYING TO READ secret
-      - run: echo you know ${{ secrets.FOO_BAR }} this
+      - run: echo you know $YO YO ${YO} ${{YO}} this
+        WITH:
+          YO: ${{ secrets.FOO_BAR }}
       - run: go test
       - run: go run math.go
